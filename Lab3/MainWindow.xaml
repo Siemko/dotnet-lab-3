@@ -3,10 +3,118 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Lab3"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow"
+        Width="640"
+        Height="400"
+        Closing="Window_Closing"
+        ResizeMode="NoResize"
+        mc:Ignorable="d">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
+            <RowDefinition Height="0.2*" />
+            <RowDefinition />
+            <RowDefinition Height="0.2*" />
+            <RowDefinition Height="25" />
+        </Grid.RowDefinitions>
+
+
+        <!--  Menu  -->
+        <Grid Grid.Row="0">
+            <Menu HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                <MenuItem Header="File">
+                    <MenuItem Click="New_Click" Header="New..." />
+                    <MenuItem Click="Open_Click" Header="Open file..." />
+                    <Separator />
+                    <MenuItem Click="Exit_Click" Header="Close" />
+                </MenuItem>
+                <MenuItem Header="Help">
+                    <MenuItem Click="About_Click" Header="About" />
+                </MenuItem>
+
+            </Menu>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+
+            <Label VerticalAlignment="Center">Elements number:</Label>
+            <TextBox Name="Amount"
+                     Grid.Column="0"
+                     Width="120"
+                     Height="20"
+                     VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="121,13,182,13" />
+
+            <Label Grid.Column="1" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="41,10,170,10">From:</Label>
+            <TextBox Name="From"
+                     Grid.Column="1"
+                     Width="120"
+                     Height="20"
+                     VerticalAlignment="Center" Margin="87,13,5,13" />
+
+            <Label Grid.Column="2" VerticalAlignment="Center">To:</Label>
+            <TextBox Name="To"
+                     Grid.Column="2"
+                     Width="120"
+                     Height="20"
+                     VerticalAlignment="Center" />
+        </Grid>
+
+
+        <Grid Grid.Row="2">
+            <ListBox Name="ListBox"
+                     Width="600"
+                     Height="200"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center" />
+        </Grid>
+
+
+
+        <Grid Grid.Row="3">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="0.3*" />
+            </Grid.ColumnDefinitions>
+
+            <ProgressBar Name="ProgressBar"
+                         Grid.Column="0"
+                         Width="450"
+                         Height="30"
+                         Margin="20,0,0,0"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center" />
+            <Button Name="StartButton"
+                    Grid.Column="1"
+                    Width="100"
+                    Height="30"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Click="StartButton_Click"
+                    Content="Start" />
+            <Button Name="StopButton"
+                    Grid.Column="1"
+                    Width="100"
+                    Height="30"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Click="StopButton_Click"
+                    Content="S T O P"
+                    Visibility="Collapsed" />
+        </Grid>
+
+        <StatusBar Grid.Row="4" VerticalAlignment="Bottom">
+            <StatusBarItem>
+                <TextBlock Name="StatusBar"
+                           HorizontalAlignment="Right"
+                           Text="Wykonał: Dominik Guzy" />
+            </StatusBarItem>
+        </StatusBar>
     </Grid>
 </Window>
